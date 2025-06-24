@@ -1,0 +1,19 @@
+{
+    "typecho": {
+        "username": "your_username",
+        "password": "your_password",
+        "xmlrpc_php": "https://your-domain.com/action/xmlrpc"
+    },
+    "qiniu": {
+        "access_key": "your_access_key",
+        "secret_key": "your_secret_key",
+        "bucket_name": "your_bucket_name",
+        "domain": "https://your-domain.com",
+        "show": "https://your-show-domain.com"
+    },
+    "posts": {
+        "directory": "_posts",
+        "default_tags": "blog",
+        "default_category": "default"
+    }
+} 
