@@ -7,6 +7,7 @@ on:
 jobs:
   push:
     runs-on: ubuntu-latest
+    environment: note
     permissions:
       contents: write
     steps:
@@ -61,5 +62,5 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: 'docs: Auto update README and hash cache'
-          file_pattern: '.md_sha1 README.md'
+          file_pattern: '.md_sha1'
 

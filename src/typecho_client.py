@@ -27,7 +27,7 @@ class TypechoClient:
             config['xmlrpc_php'],
             username=config['username'],
             password=config['password'],
-            debug=True
+            debug=False
         )
         
         # Disable SSL verification for compatibility
@@ -41,7 +41,7 @@ class TypechoClient:
             List of post dictionaries with id and link
         """
         try:
-            posts = self.client.get_posts()
+            posts = self.client.get_posts(num=1000)
             post_list = []
             for post in posts:
                 post_list.append({

@@ -4,7 +4,6 @@ config.txt
 local_config.txt
 
 # Cache files
-.md_sha1
 *.cache
 
 # Python

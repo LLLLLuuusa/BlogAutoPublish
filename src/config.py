@@ -52,7 +52,7 @@ class Config:
                 print(f"Warning: Could not load config file: {e}")
         
         # Override with environment variables
-        config = self._override_with_env(config)
+        # config = self._override_with_env(config)
         
         # Validate configuration
         self._validate_config(config)
