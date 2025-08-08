@@ -53,30 +53,8 @@ class TypechoClient:
             print(f"Error getting posts: {e}")
             return []
     
-    def get_categories(self) -> List[Dict[str, Any]]:
-        """
-        Get all categories from Typecho.
-        
-        Returns:
-            List of category dictionaries with id, name, and slug
-        """
-        try:
-            categories = self.client.get_categories()
-            category_list = []
-            for category in categories:
-                category_list.append({
-                    "id": category["categoryId"],
-                    "name": category["categoryName"],
-                    "slug": category.get("categorySlug", ""),
-                    "description": category.get("categoryDescription", "")
-                })
-            return category_list
-        except Exception as e:
-            print(f"Error getting categories: {e}")
-            return []
-    
     def create_post(self, title: str, content: str, slug: str, 
-                   tags: str, category_ids: List[int], date: datetime) -> bool:
+                   tags: str, categories: str, date: datetime) -> bool:
         """
         Create a new post.
         
@@ -85,7 +63,7 @@ class TypechoClient:
             content: Post content (HTML)
             slug: Post slug
             tags: Post tags
-            category_ids: List of category IDs
+            categories: Post categories
             date: Post date
             
         Returns:
@@ -93,7 +71,7 @@ class TypechoClient:
         """
         try:
             post_obj = self._create_post_object(
-                title, content, slug, "publish", tags, category_ids, date
+                title, content, slug, "publish", tags, categories, date
             )
             post_obj.type = 'markdown'
             
@@ -111,7 +89,7 @@ class TypechoClient:
             return False
     
     def update_post(self, post_id: int, title: str, content: str, slug: str,
-                   tags: str, category_ids: List[int], date: datetime) -> bool:
+                   tags: str, categories: str, date: datetime) -> bool:
         """
         Update an existing post.
         
@@ -121,7 +99,7 @@ class TypechoClient:
             content: Post content (HTML)
             slug: Post slug
             tags: Post tags
-            category_ids: List of category IDs
+            categories: Post categories
             date: Post date
             
         Returns:
@@ -129,7 +107,7 @@ class TypechoClient:
         """
         try:
             post_obj = self._create_post_object(
-                title, content, slug, "publish", tags, category_ids, date
+                title, content, slug, "publish", tags, categories, date
             )
             
             result = self.client.edit_post(post_obj, post_id=post_id, publish=True)
@@ -146,7 +124,7 @@ class TypechoClient:
             return False
     
     def _create_post_object(self, title: str, content: str, slug: str,
-                          status: str, tags: str, category_ids: List[int], 
+                          status: str, tags: str, categories: str, 
                           date: datetime) -> Post:
         """
         Create a Post object for Typecho.
@@ -157,7 +135,7 @@ class TypechoClient:
             slug: Post slug
             status: Post status
             tags: Post tags
-            category_ids: List of category IDs
+            categories: Post categories
             date: Post date
             
         Returns:
@@ -169,7 +147,7 @@ class TypechoClient:
             slug=slug,
             post_status=status,
             mt_keywords=tags,
-            categories=category_ids,
+            categories=categories,
             dateCreated=date,
         )
         post_obj.__dict__['markdown'] = 1
