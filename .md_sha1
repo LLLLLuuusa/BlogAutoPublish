@@ -35,7 +35,7 @@
     "encode_file_name": "dynamicdatasource"
   },
   "Javamianshi": {
-    "hash_value": "0c3d5913b8fa03b3eafcf0ea8d53fe2cb437918e",
+    "hash_value": "ff515ec9d5ef41a93f90cdeca1e4f085b9c5c530",
     "file_name": "Javamianshi",
     "encode_file_name": "javamianshi"
   },
@@ -109,5 +109,5 @@
     "file_name": "seata",
     "encode_file_name": "seata"
   },
-  "update_time": "2025-07-18 23:31:49"
+  "update_time": "2025-08-08 06:04:37"
 }
