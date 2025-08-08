@@ -124,14 +124,22 @@ class MarkdownProcessor:
         """
         return ', '.join(tags)
     
-    def format_categories(self, categories: List[str]) -> str:
+    def format_categories(self, categories: List[str], category_mapping: Dict[str, int]) -> List[int]:
         """
-        Format categories list to string.
+        Convert category names to category IDs.
         
         Args:
-            categories: List of categories
+            categories: List of category names
+            category_mapping: Dictionary mapping category names to IDs
             
         Returns:
-            Comma-separated categories string
+            List of category IDs
         """
-        return ', '.join(categories) 
+        category_ids = []
+        for category_name in categories:
+            if category_name in category_mapping:
+                category_ids.append(category_mapping[category_name])
+            else:
+                print(f"Warning: Category '{category_name}' not found in Typecho. Skipping.")
+        
+        return category_ids 

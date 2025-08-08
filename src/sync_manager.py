@@ -32,6 +32,9 @@ class SyncManager:
         self.markdown_processor = MarkdownProcessor(self.qiniu_client)
         self.domain_name = self.config.get_domain_name()
         
+        # Build category mapping
+        self.category_mapping = self._build_category_mapping()
+        
         # Statistics
         self.stats = {
             'unchanged': 0,
@@ -97,6 +100,25 @@ class SyncManager:
             url_to_id[post["link"]] = post["id"]
         return url_to_id
     
+    def _build_category_mapping(self) -> Dict[str, int]:
+        """
+        Build mapping from category names to category IDs.
+        
+        Returns:
+            Dictionary mapping category names to category IDs
+        """
+        categories = self.typecho_client.get_categories()
+        category_mapping = {}
+        
+        for category in categories:
+            category_mapping[category["name"]] = category["id"]
+        
+        print(f"Found {len(category_mapping)} categories in Typecho:")
+        for name, cat_id in category_mapping.items():
+            print(f"  - {name} (ID: {cat_id})")
+        
+        return category_mapping
+    
     def _load_hash_cache(self, cache_file: str) -> Dict[str, Any]:
         """
         Load hash cache from file.
@@ -153,8 +175,8 @@ class SyncManager:
         # Prepare post data
         title = validated_metadata['title']
         tags = self.markdown_processor.format_tags(validated_metadata['tags'])
-        categories = self.markdown_processor.format_categories(
-            validated_metadata['categories']
+        category_ids = self.markdown_processor.format_categories(
+            validated_metadata['categories'], self.category_mapping
         )
         date = validated_metadata['date']
         
@@ -170,7 +192,7 @@ class SyncManager:
             # Update existing post
             post_id = existing_posts[post_url]
             success = self.typecho_client.update_post(
-                post_id, title, html_content, slug, tags, categories, date
+                post_id, title, html_content, slug, tags, category_ids, date
             )
             if success:
                 self.stats['updated'] += 1
@@ -181,7 +203,7 @@ class SyncManager:
         else:
             # Create new post
             success = self.typecho_client.create_post(
-                title, html_content, slug, tags, categories, date
+                title, html_content, slug, tags, category_ids, date
             )
             if success:
                 self.stats['created'] += 1
