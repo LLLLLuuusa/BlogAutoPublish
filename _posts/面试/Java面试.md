@@ -3,7 +3,7 @@ title: java面试
 tags: 
 - Java
 categories:
-- 面试宝典
+- 面试
 ---
 # Java基础
 
@@ -1204,7 +1204,7 @@ spring是一个IOC和AOP容器开源框架
 + 响应从DispatcherServlet到ViewResolver,主要是将响应的数据如果是ModelView则找对应的http文件渲染,若是Model对象则转为json对象,最后返回DispatcherServlet
 + 响应从DispatcherServlet到HttpMessageConvert,将响应数据格式修改,并返回给用户
 
-其中,若有配置拦截器,则
+其中,若有配置拦截器则
 
 + 请求从DispatcherServlet到HandlerMapping会触发拦截器的preHandler
 + 返回ModleView或响应数据到DispatcherServlet前端控制器会触发拦截器的postHandler
