@@ -166,6 +166,9 @@ class SyncManager:
         
         # Create or update post
         success = False
+        print(post_url)
+        print(existing_posts)
+        print("#########################")
         if post_url in existing_posts:
             # Update existing post
             post_id = existing_posts[post_url]
