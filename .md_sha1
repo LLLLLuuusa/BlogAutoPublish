@@ -30,7 +30,7 @@
     "encode_file_name": "websocket"
   },
   "Javamianshi": {
-    "hash_value": "bc55a8deb74ac9133dbe78bd43cc77cc7d42e678",
+    "hash_value": "40607bb1e381b6274217e0357d20f18e2f4be2e2",
     "file_name": "Javamianshi",
     "encode_file_name": "javamianshi"
   },
@@ -109,5 +109,5 @@
     "file_name": "HibernateValidator",
     "encode_file_name": "hibernatevalidator"
   },
-  "update_time": "2025-10-22 06:28:32"
+  "update_time": "2025-10-22 07:04:28"
 }
