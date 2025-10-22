@@ -34,6 +34,16 @@
     "file_name": "Javamianshi",
     "encode_file_name": "javamianshi"
   },
+  "Vuemianshi": {
+    "hash_value": "73131d288d880166ee819b6f386b1c185a001396",
+    "file_name": "Vuemianshi",
+    "encode_file_name": "vuemianshi"
+  },
+  "TypeScript": {
+    "hash_value": "8876fc4d97d153ab7388cf827b05a224d180fffd",
+    "file_name": "TypeScript",
+    "encode_file_name": "typescript"
+  },
   "Nginxbiji": {
     "hash_value": "7917b7b02d33a2637ea9a64664a672e0c15002ed",
     "file_name": "Nginxbiji",
@@ -109,5 +119,5 @@
     "file_name": "HibernateValidator",
     "encode_file_name": "hibernatevalidator"
   },
-  "update_time": "2025-10-22 08:32:24"
+  "update_time": "2025-10-22 08:37:01"
 }
