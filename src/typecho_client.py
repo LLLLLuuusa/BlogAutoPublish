@@ -111,8 +111,9 @@ class TypechoClient:
             )
             
             result = self.client.edit_post(post_obj, post_id=post_id, publish=True)
+            print()
             
-            if result and isinstance(result, int) and result == post_id:
+            if result and isinstance(result, int) and str(result) == str(post_id):
                 print(f"Post updated successfully: {result}")
                 return True
             else:
