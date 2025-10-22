@@ -1,3 +1,11 @@
+---
+title: TypeScript
+tags:
+  - ts
+categories:
+  - 学习笔记
+---
+
 # 类型推断
 ts的对象是强类型,js的对象是弱类型
 + 强类型:不符合规范的赋值会报错
