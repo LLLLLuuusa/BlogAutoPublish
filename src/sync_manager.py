@@ -168,6 +168,7 @@ class SyncManager:
         success = False
         print(post_url)
         print(existing_posts)
+        print("slug:"+slug)
         print("#########################")
         if post_url in existing_posts:
             # Update existing post
