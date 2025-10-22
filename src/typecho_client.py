@@ -177,4 +177,4 @@ class TypechoClient:
             Complete post URL
         """
         encoded_slug = urllib.parse.quote(slug, safe='').lower()
-        return f"https://{domain}/index.php/p/{encoded_slug}.html" 
+        return f"https://{domain}/index.php/p/{encoded_slug}/" 

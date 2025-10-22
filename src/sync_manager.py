@@ -296,7 +296,7 @@ class SyncManager:
                 content, metadata = self.markdown_processor.read_markdown_file(md_file)
                 title = metadata.get("title", "Untitled")
                 slug = self.markdown_processor.get_file_slug(md_file)
-                url = f"https://{self.domain_name}/index.php/p/{slug}/"
+                url = f"https://{self.domain_name}/index.php/p/{slug}.html"
                 index_lines.append(f"[{title}]({url})")
                 index_lines.append("")
             except Exception as e:
