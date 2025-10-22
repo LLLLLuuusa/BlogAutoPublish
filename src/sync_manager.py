@@ -94,7 +94,7 @@ class SyncManager:
         posts = self.typecho_client.get_posts()
         url_to_id = {}
         for post in posts:
-            url_to_id[post["link"]] = post["id"]
+            url_to_id[str(post["link"]).lower()] = post["id"]
         return url_to_id
     
     def _load_hash_cache(self, cache_file: str) -> Dict[str, Any]:
